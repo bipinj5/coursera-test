@@ -1,0 +1,48 @@
+* {
+	box-sizing: border-box;
+}
+.container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+}
+.navbar-brand {
+	padding-left: 25px;
+}
+hr {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.navbar-nav {
+    margin: 0px; 
+}
+@media (min-width: 1200px) {
+	.jumbotron {
+		background: url("../jumbo1200.jpg") no-repeat;
+		box-shadow: 0 0 50px #3F0C1F;
+		height: 706px;
+		border: 2px solid #3F0C1F;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.jumbotron {
+		background: url("../jumbo1200.jpg") no-repeat;
+		box-shadow: 0 0 50px #3F0C1F;
+		height: 667px;
+		border: 2px solid #3F0C1F;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.jumbotron {
+		background: url("../jumbo768.jpg") no-repeat;
+		box-shadow: 0 0 50px #3F0C1F;
+		height: 446px;
+		border: 2px solid #3F0C1F;
+	}
+}
+.jumbotron > img {
+		box-shadow: 0 0 50px #3F0C1F;
+		border: 2px solid #3F0C1F;
+}
