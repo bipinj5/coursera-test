@@ -2,11 +2,11 @@
 	box-sizing: border-box;
 }
 .container {
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-right: 0;
-    margin-left: 0;
+    
     width: 100%;
+}
+li img {
+	padding-right: 10px;
 }
 .navbar-brand {
 	padding-left: 25px;
@@ -18,16 +18,53 @@ hr {
 .navbar-nav {
     margin: 0px; 
 }
+#home-tiles {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+#menu-tile, #special-tile, #map-tile {
+	height: 250px;
+	width: 100%;
+	position: relative;
+	border: 2px solid #3F0C1F;
+	margin-bottom: 15px;
+	overflow: hidden;
+	font-size: 3em;
+}
+#menu-tile:hover, #special-tile:hover, #map-tile:hover {
+	box-shadow: 0px 1px 5px 1px #cccccc;
+}
+#menu-tile {
+	background: url("../menu.jpg");
+	background-size: height:250px;
+	background-position: center;
+}
+#special-tile {
+	background: url("../special.jpg");
+	background-position: center;
+}
+#menu-tile span, #special-tile span, #map-tile span {
+	color: white;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	text-align: center;
+	background-color: grey;
+	opacity: .8;
+	padding-right: 5px;
+	padding-left: 5px;
+}
 @media (min-width: 1200px) {
-	.jumbotron {
-		background: url("../jumbo1200.jpg") no-repeat;
+	.container .jumbotron {
+		background: url("../jumbo1600.jpg") no-repeat;
 		box-shadow: 0 0 50px #3F0C1F;
 		height: 706px;
 		border: 2px solid #3F0C1F;
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-	.jumbotron {
+	.container .jumbotron {
 		background: url("../jumbo1200.jpg") no-repeat;
 		box-shadow: 0 0 50px #3F0C1F;
 		height: 667px;
@@ -35,14 +72,17 @@ hr {
 	}
 }
 @media (min-width: 768px) and (max-width: 991px) {
-	.jumbotron {
-		background: url("../jumbo768.jpg") no-repeat;
+	.container .jumbotron {
+		background: url("../jumbo992.jpg") no-repeat;
 		box-shadow: 0 0 50px #3F0C1F;
 		height: 446px;
 		border: 2px solid #3F0C1F;
 	}
 }
-.jumbotron > img {
-		box-shadow: 0 0 50px #3F0C1F;
-		border: 2px solid #3F0C1F;
+@media (max-width: 767px) {
+	.container .jumbotron {
+			padding: 0px;
+			box-shadow: 0 0 50px #3F0C1F;
+			border: 2px solid #3F0C1F;
+	}
 }
