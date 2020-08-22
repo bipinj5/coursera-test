@@ -91,6 +91,9 @@ hr {
 .menu-item-tile {
 	margin-bottom: 25px;
 }
+.menu-item-tile:hover {
+	box-shadow: 0px 1px 5px 1px yellow;
+}
 .menu-item-photo {
 	position: relative;
 	max-width: 250px;
