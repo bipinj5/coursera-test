@@ -1,0 +1,110 @@
+$(function () {
+	$("#navbarToggle").blur(function (event) {
+		var screenWidth = window.innerWidth;
+		if (screenWidth < 786 ) {
+			$("#collapsable-nav").collapse('hide');
+		}
+	});
+});
+
+
+(function (global) {
+
+var vc = {};
+
+var homeHtml="maincontent.html";
+var menuCategoryHtml="menu-categories.html";
+var singleCategoryHtml="single-category.html";
+var allCategoriesUrl =
+  "https://davids-restaurant.herokuapp.com/categories.json";
+
+var insertHtml = function (selector, html) {
+	var targetElem = document.querySelector(selector);
+	targetElem.innerHTML = html;
+};
+
+var showLoading = function (selector) {
+	var html = "<div class='text-center'>";
+	html += "<img src='ajax-loader.gif' alt='loading gif'/></div>";
+	insertHtml(selector, html);
+};
+
+var insertProperty = function (string, propName, propValue) {
+	var propToReplace = "{{" + propName + "}}";
+	string = string.replace(new RegExp(propToReplace, "g"), propValue);
+	return string;
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+showLoading("#main-content");
+$ajaxUtils.sendGetRequest(
+	homeHtml,
+	function (responseText) {
+		document.querySelector("#main-content")
+		.innerHTML = responseText;
+	},
+	false);
+});
+
+vc.loadMenuCategories = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    allCategoriesUrl,
+    buildAndShowCategoriesHTML);
+};
+
+
+vc.loadSingleMenuCategories = function () {
+	showLoading("#main-content");
+	$ajaxUtils.sendGetRequest(
+		singleCategoryHtml,
+		function (responseText) {
+			document.querySelector("#main-content")
+			.innerHTML =  responseText;
+		},
+		false);	
+}
+
+function buildAndShowCategoriesHTML (categories) {
+  // Load title snippet of categories page
+      $ajaxUtils.sendGetRequest(
+        menuCategoryHtml,
+        function (menuCategoryHtml) {
+          // Switch CSS class active to menu button
+          
+          var categoriesViewHtml =
+            buildCategoriesViewHtml(categories,
+                                    menuCategoryHtml);
+          insertHtml("#main-content", categoriesViewHtml);
+        },
+        false);
+}
+
+function buildCategoriesViewHtml(categories,
+                                 menuCategoryHtml) {
+
+  var finalHtml = "<section class='row'>";
+
+  // Loop over categories
+  for (var i = 0; i < categories.length; i++) {
+    // Insert category values
+    var html = menuCategoryHtml;
+    var name = "" + categories[i].name;
+    var short_name = categories[i].short_name;
+    html =
+      insertProperty(html, "name", name);
+    html =
+      insertProperty(html,
+                     "short_name",
+                     short_name);
+    finalHtml += html;
+  }
+
+  finalHtml += "</section>";
+  return finalHtml;
+}
+
+
+global.$vc =  vc;
+
+})(window);

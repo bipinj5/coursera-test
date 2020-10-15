@@ -1,8 +1,13 @@
 * {
 	box-sizing: border-box;
 }
-.container {
- 
+.navbar-default .navbar-nav>li>a:hover {
+    color: #555;
+    background-color: lightgrey;
+}
+.navbar-collapse {
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 li img {
@@ -97,6 +102,10 @@ hr {
 .menu-item-photo {
 	position: relative;
 	max-width: 250px;
+	overflow: hidden;
+	margin-right: -15px;
+	margin-left: auto;
+	padding: 0px;
 	
 }
 .menu-item-photo > div {
@@ -109,10 +118,14 @@ hr {
 
 .menu-item-price {
 	text-align: right;
+	margin-right: -15px;
 }
 
 .menu-item-price > span {
 	font-size: 0.8em;
+}
+.menu-item-tile hr {
+    width: 80%;
 }
 
 @media (min-width: 1200px) {
@@ -171,5 +184,16 @@ hr {
 		vertical-align: center;
 
 	}
+	#menu-tile, #special-tile {
+		width: 360px;
+	}
 
+}
+@media (max-width: 479px) {
+	.col-xxs-12 {
+		width: 100%;
+	}
+	#menu-tile, #special-tile {
+		width: 280px;
+	}
 }
