@@ -7,6 +7,19 @@ $(function () {
 	});
 });
 
+$(function () {
+	var header = document.getElementById("nav-list");
+	var btns = header.getElementsByClassName("btn");
+	for (var i = 0; i < btns.length; i++) {
+	  btns[i].addEventListener("click", function() {
+	  var current = document.getElementsByClassName("active");
+	  if (current.length > 0) { 
+	    current[0].className = current[0].className.replace(" active", "");
+	  }
+	  this.className += " active";
+	  });
+	}
+});
 
 (function (global) {
 
@@ -36,6 +49,7 @@ var insertProperty = function (string, propName, propValue) {
 	string = string.replace(new RegExp(propToReplace, "g"), propValue);
 	return string;
 }
+
 
 document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");

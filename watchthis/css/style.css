@@ -1,13 +1,27 @@
 * {
 	box-sizing: border-box;
 }
+.navbar {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
 .navbar-default .navbar-nav>li>a:hover {
     color: #555;
     background-color: lightgrey;
 }
+.btn.active, .btn:active {
+    background-image: none;
+    outline: 0;
+    background-color: lightgrey;
+}
+
 .navbar-collapse {
 	padding-left: 0px;
 	padding-right: 0px;
+}
+body {
+	padding-top: 90px;
 }
 
 li img {
